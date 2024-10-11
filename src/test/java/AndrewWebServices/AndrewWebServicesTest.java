@@ -8,6 +8,7 @@ import org.junit.Test;
 
 public class AndrewWebServicesTest {
     Database database;
+    InMemoryDatabase fakeDatabase;
     RecSys recommender;
     PromoService promoService;
     AndrewWebServices andrewWebService;
@@ -16,15 +17,18 @@ public class AndrewWebServicesTest {
     public void setUp() {
         // You need to use some mock objects here
         database = new Database(); // We probably don't want to access our real database...
+        fakeDatabase = new InMemoryDatabase();
         recommender = new RecSys();
         promoService = new PromoService();
 
-        andrewWebService = new AndrewWebServices(database, recommender, promoService);
+        //andrewWebService = new AndrewWebServices(database, recommender, promoService);
+        andrewWebService = new AndrewWebServices(fakeDatabase, recommender, promoService);
     }
 
     @Test
     public void testLogIn() {
         // This is taking way too long to test
+        //assertTrue(andrewWebService.logIn("Scotty", 17214));
         assertTrue(andrewWebService.logIn("Scotty", 17214));
     }
 
